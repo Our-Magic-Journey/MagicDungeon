@@ -8,7 +8,6 @@ using UnityEngine;
 public class Movement : MonoBehaviour {
     [Header("Rotation")]
     public float sensitivity = 2.0f;
-    private bool allowRotation = true;
     private Vector3 movement;
     
     private Statistics statistics;
