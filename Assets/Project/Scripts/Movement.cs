@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,9 +26,16 @@ public class Movement : MonoBehaviour {
         movement.z = Input.GetAxis("Vertical");   
         
         Rotation();
+        Animations();
+    }
 
-        animator.SetBool("moving", movement.z != 0 || movement.x != 0);
-        animator.SetInteger("direction", -(int)movement.x);
+    void Animations() {
+        Vector3 move = transform.right * movement.x + transform.forward * movement.z;
+        
+        Debug.Log(move);
+
+        animator.SetInteger("vertical", (int)MathF.Round(move.z));
+        animator.SetInteger("horizontal", (int)MathF.Round(move.x));
     }
 
     void FixedUpdate() {
